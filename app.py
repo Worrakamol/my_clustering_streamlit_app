@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 --
 """
 Created on Sun Apr 20 15:43:46 2025
-
 @author: LAB
 """
 
@@ -27,7 +26,16 @@ X, _ = make_blobs(n_samples=300, centers=loaded_model.n_clusters, cluster_std=0.
 y_kmeans = loaded_model.predict(X)
 
 # Plot
+plt.figure(figsize=(8, 6))
 plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
+
+# Plot centroids
 centers = loaded_model.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.75)
+plt.scatter(centers[:, 0], centers[:, 1], c='red', s=300, alpha=0.9, label='Centroids')
+
+# Add legend and title
+plt.title("k-Means Clustering")
+plt.legend(loc='upper right')
+
+# Show in Streamlit
 st.pyplot(plt)
